@@ -1,13 +1,12 @@
 package co.edu.uniquindio.poo.model;
 
-import java.util.Collection;
 import java.util.LinkedList;
 
 public class Equipo {
 
     private String nombre;
     private String paisOrigen;
-    private Collection<Atleta> listaAtletas;
+    private LinkedList<Atleta> listaAtletas;
 
 
     public Equipo(String nombre, String paisOrigen) {
@@ -16,7 +15,38 @@ public class Equipo {
         listaAtletas = new LinkedList<Atleta>();
     }
 
+ /**
+     * Añade una persona de atleta
+     * 
+     * @param atleta
+     * @return
+     */
+    public boolean añadirAtleta(Atleta atleta) {
+        if (atleta == null) {
+            throw new IllegalArgumentException("No se puede agregar un elemento nulo");
+        }
 
+        listaAtletas.add(atleta);
+        return true;
+    }
+
+    /**
+     * Elimina una persona de atleta
+     * 
+     * @param atleta
+     * @return
+     */
+    public boolean eliminarAtleta(Atleta atleta) {
+        if (atleta == null) {
+            throw new IllegalArgumentException("No se puede eliminar un elemento nulo");
+        }
+        if (!listaAtletas.contains(atleta)) {
+            return false;
+        }
+
+        listaAtletas.remove(atleta);
+        return true;
+    }
 
     
     //Setters & Getters
@@ -39,15 +69,17 @@ public class Equipo {
         this.paisOrigen = paisOrigen;
     }
 
-
-    public Collection<Atleta> getListaAtletas() {
+    public LinkedList<Atleta> getListaAtletas() {
         return listaAtletas;
     }
 
-
-    public void setListaAtletas(Collection<Atleta> listaAtletas) {
+    public void setListaAtletas(LinkedList<Atleta> listaAtletas) {
         this.listaAtletas = listaAtletas;
     }
 
 
-}
+
+    }
+
+
+
